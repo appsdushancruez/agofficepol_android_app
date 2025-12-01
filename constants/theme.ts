@@ -5,25 +5,48 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
+// Modern Android Material Design 3 inspired colors
+const whatsappGreen = '#25D366'; // Primary green
+const whatsappGreenDark = '#128C7E'; // Dark green
+const whatsappGreenLight = '#DCF8C6'; // Light green
+const whatsappGreenAccent = '#34C759'; // Accent green
+const tintColorLight = whatsappGreen;
 const tintColorDark = '#fff';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#1A1A1A',
+    background: '#FFFFFF',
     tint: tintColorLight,
     icon: '#687076',
     tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
+    whatsappGreen,
+    whatsappGreenDark,
+    whatsappGreenLight,
+    whatsappGreenAccent,
+    welcomeBackground: '#F5FDF7', // Modern light green background
+    surface: '#FFFFFF',
+    surfaceVariant: '#F5F5F5',
+    outline: '#E0E0E0',
+    outlineVariant: '#C8E6C9',
   },
   dark: {
     text: '#ECEDEE',
-    background: '#151718',
+    background: '#121212',
     tint: tintColorDark,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+    whatsappGreen,
+    whatsappGreenDark,
+    whatsappGreenLight,
+    whatsappGreenAccent,
+    welcomeBackground: '#1B3A2E',
+    surface: '#1E1E1E',
+    surfaceVariant: '#2C2C2C',
+    outline: '#404040',
+    outlineVariant: '#2D4A3E',
   },
 };
 
