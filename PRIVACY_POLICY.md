@@ -1,7 +1,7 @@
 # Privacy Policy
 
 **Last Updated:** 02-12-2025
-**App Name:** Chat Bot DS Office Polgahawela
+**App Name:** Chat Bot
 **Package Name:** com.dmccruez.chat_bot  
 **Developer:** [Dushan Cruez/NEMTECH]
 

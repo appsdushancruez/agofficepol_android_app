@@ -1,3 +1,6 @@
+import { Language } from '@/constants/translations';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { useState } from 'react';
@@ -9,9 +12,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { Language } from '@/constants/translations';
 
 // Import Lottie animation
 const chatbotAnimation = require('../assets/images/chatbot.json');
@@ -62,6 +62,10 @@ export default function WelcomeScreen() {
           autoPlay
           loop
           style={styles.lottie}
+          onAnimationFailure={(error) => {
+            console.error('Lottie animation error:', error);
+            // Don't crash if animation fails
+          }}
         />
       </View>
 

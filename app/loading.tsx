@@ -48,15 +48,19 @@ export default function LoadingScreen() {
       <View style={styles.container}>
         <View style={styles.content}>
           <LottieView
-          source={chatbotAnimation}
-          autoPlay
-          loop
-          style={styles.lottie}
-        />
+            source={chatbotAnimation}
+            autoPlay
+            loop
+            style={styles.lottie}
+            onAnimationFailure={(error) => {
+              console.error('Lottie animation error:', error);
+              // Don't crash if animation fails
+            }}
+          />
         
         <View style={styles.textContainer}>
           <Text style={styles.mainTitle}>
-            පොල්ගහවෙල ප්‍රාදේශීය ලේඛම් කාර්යාලය
+            AI චැට්බොට් සේවාව
           </Text>
           <Text style={styles.subTitle}>
             බොට් පරිපාලන පද්ධතිය

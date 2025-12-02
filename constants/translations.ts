@@ -21,12 +21,12 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   si: {
     welcome: {
-      badge: 'පොල්ගහවෙල ප්‍රාදේශීය ලේකම් කාර්යාලය',
+      badge: 'AI චැට්බොට් සේවාව',
       titlePart1: 'WhatsApp',
       titlePart2: 'Bot',
       titlePart3: 'Admin',
       titlePart4: 'System',
-      description: 'විවිධ සේවා සපයා රජයේ සේවා සැපයීම සඳහා WhatsApp හරහා අප හා සම්බන්ධ වන්න. වැදගත් තොරතුරු, ලේඛන, අනුමැතිය සහ රැකියා තත්ත්ව යාවත්කාලීන කිරීම් ලබා ගන්න.',
+      description: 'විවිධ සේවා සපයා WhatsApp හරහා අප හා සම්බන්ධ වන්න. වැදගත් තොරතුරු, ලේඛන, අනුමැතිය සහ රැකියා තත්ත්ව යාවත්කාලීන කිරීම් ලබා ගන්න.',
       chatButton: 'බොට් සමඟ සංවාදය',
       liveStatus: 'සජීවී සහ ක්‍රියාකාරී',
       selectLanguage: 'භාෂාව තෝරන්න',
@@ -38,12 +38,12 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     welcome: {
-      badge: 'Polgahawela Divisional Secretariat Office',
+      badge: 'AI Chat Bot Service',
       titlePart1: 'WhatsApp',
       titlePart2: 'Bot',
       titlePart3: 'Admin',
       titlePart4: 'System',
-      description: 'Connect with us via WhatsApp to serve the public with various services. Get important information, documents, approvals, and job status updates.',
+      description: 'Connect with us via WhatsApp to access various services. Get important information, documents, approvals, and job status updates.',
       chatButton: 'Chat with Bot',
       liveStatus: 'Live & Active',
       selectLanguage: 'Select Language',

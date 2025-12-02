@@ -1,6 +1,6 @@
+import { Language, translations } from '@/constants/translations';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Language, translations } from '@/constants/translations';
 
 interface LanguageContextType {
   language: Language;
@@ -48,11 +48,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     t: translations[language],
   };
 
-  if (isLoading) {
-    return null; // Or a loading spinner
-  }
+  // Don't return null - always render children, but use default language while loading
+  // This prevents crashes in production builds
+  const safeValue: LanguageContextType = isLoading
+    ? {
+        language: 'si', // Default language
+        setLanguage: async () => {},
+        t: translations.si,
+      }
+    : value;
 
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+  return <LanguageContext.Provider value={safeValue}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {
