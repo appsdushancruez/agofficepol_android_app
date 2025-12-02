@@ -128,13 +128,6 @@ We may share your information with the following types of third parties:
 
 We do NOT sell, rent, or trade your personal information to third parties for marketing purposes.
 
-### Legal Requirements
-
-We may disclose your information if required by law or in response to valid legal requests, such as:
-- Court orders or subpoenas
-- Government investigations
-- Protection of our rights or user safety
-
 ---
 
 ## Data Security
