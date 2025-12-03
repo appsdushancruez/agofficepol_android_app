@@ -1,3 +1,12 @@
+export interface Document {
+  id: string;
+  title: string;
+  file_name: string;
+  file_path: string;
+  file_size: number;
+  mime_type: string;
+}
+
 export interface MenuItem {
   id: string;
   title: string;
@@ -6,6 +15,7 @@ export interface MenuItem {
   is_main_menu: boolean;
   parent_id: string | null;
   created_at: string;
+  documents?: Document[];
 }
 
 export interface ChatMessage {
@@ -14,6 +24,7 @@ export interface ChatMessage {
   isUser: boolean;
   timestamp: Date;
   menuItems?: MenuItem[];
+  documents?: Document[];
 }
 
 export interface ChatResponse {

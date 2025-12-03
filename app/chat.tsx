@@ -1,11 +1,12 @@
 import { ChatMessage } from '@/components/ChatMessage';
+import { DocumentButtons } from '@/components/DocumentButtons';
 import { MenuButtons } from '@/components/MenuButtons';
 import { MessageInput } from '@/components/MessageInput';
 import { TypingIndicator } from '@/components/TypingIndicator';
 import { Colors } from '@/constants/theme';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { chatAPI } from '@/services/api';
-import { ChatMessage as ChatMessageType, MenuItem } from '@/types';
+import { ChatMessage as ChatMessageType, Document, MenuItem } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
 import {
     FlatList,
@@ -23,6 +24,7 @@ export default function ChatScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentParentId, setCurrentParentId] = useState<string | null>(null);
   const [previousMenuItems, setPreviousMenuItems] = useState<MenuItem[] | null>(null);
+  const [downloadedDocs, setDownloadedDocs] = useState<Set<string>>(new Set());
   const flatListRef = useRef<FlatList>(null);
 
   // Auto-scroll to bottom when new messages arrive
@@ -115,6 +117,16 @@ export default function ChatScreen() {
         throw new Error('Invalid response format: no response text found');
       }
 
+      // Extract documents from menuItems
+      const documents: Document[] = [];
+      if (response.menuItems && Array.isArray(response.menuItems)) {
+        response.menuItems.forEach((menuItem) => {
+          if (menuItem.documents && Array.isArray(menuItem.documents)) {
+            documents.push(...menuItem.documents);
+          }
+        });
+      }
+
       // Create bot message
       const botMessage: ChatMessageType = {
         id: (Date.now() + 1).toString(),
@@ -122,6 +134,7 @@ export default function ChatScreen() {
         isUser: false,
         timestamp: new Date(),
         menuItems: response.menuItems || [],
+        documents: documents.length > 0 ? documents : undefined,
       };
       
       console.log('Creating bot message:', botMessage);
@@ -160,12 +173,23 @@ export default function ChatScreen() {
     }
   };
 
+  const handleDownloadComplete = (documentId: string) => {
+    setDownloadedDocs((prev) => new Set([...prev, documentId]));
+  };
+
   const renderMessage = ({ item }: { item: ChatMessageType }) => {
     return (
       <View>
         <ChatMessage message={item} />
         {item.menuItems && item.menuItems.length > 0 && (
           <MenuButtons items={item.menuItems} onSelect={handleSendMessage} />
+        )}
+        {item.documents && item.documents.length > 0 && (
+          <DocumentButtons
+            documents={item.documents}
+            downloadedDocs={downloadedDocs}
+            onDownloadComplete={handleDownloadComplete}
+          />
         )}
       </View>
     );
