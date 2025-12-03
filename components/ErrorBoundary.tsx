@@ -22,6 +22,15 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
+    
+    // Log native module errors specifically
+    if (error.message?.includes('ViewManager') || error.message?.includes('IllegalViewOperationException')) {
+      console.error('Native module error detected. This usually means a plugin is missing from app.json plugins array.');
+      console.error('Error details:', {
+        message: error.message,
+        componentStack: errorInfo.componentStack,
+      });
+    }
   }
 
   handleReset = () => {
@@ -30,12 +39,21 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
+      const errorMessage = this.state.error?.message || 'An unexpected error occurred';
+      const isNativeModuleError = errorMessage.includes('ViewManager') || 
+                                   errorMessage.includes('IllegalViewOperationException');
+      
       return (
         <View style={styles.container}>
           <Text style={styles.title}>Something went wrong</Text>
           <Text style={styles.message}>
-            {this.state.error?.message || 'An unexpected error occurred'}
+            {errorMessage}
           </Text>
+          {isNativeModuleError && (
+            <Text style={styles.hint}>
+              This appears to be a native module error. Make sure all required plugins are added to app.json.
+            </Text>
+          )}
           <Pressable style={styles.button} onPress={this.handleReset}>
             <Text style={styles.buttonText}>Try Again</Text>
           </Pressable>
@@ -76,6 +94,15 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontWeight: '600',
+  },
+  hint: {
+    fontSize: 12,
+    color: '#999999',
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+    fontStyle: 'italic',
+    paddingHorizontal: 20,
   },
 });
 
