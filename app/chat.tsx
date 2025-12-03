@@ -11,11 +11,11 @@ import {
     FlatList,
     KeyboardAvoidingView,
     Platform,
-    SafeAreaView,
     StyleSheet,
     Text,
     View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ChatScreen() {
   const { t } = useLanguage();

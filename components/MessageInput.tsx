@@ -7,6 +7,7 @@ import {
   Keyboard,
   Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
 interface MessageInputProps {
@@ -16,6 +17,7 @@ interface MessageInputProps {
 
 export function MessageInput({ onSend, isLoading }: MessageInputProps) {
   const [text, setText] = useState('');
+  const insets = useSafeAreaInsets();
 
   const handleSend = () => {
     const trimmedText = text.trim();
@@ -26,8 +28,15 @@ export function MessageInput({ onSend, isLoading }: MessageInputProps) {
     }
   };
 
+  const containerStyle = [
+    styles.container,
+    {
+      paddingBottom: Platform.OS === 'ios' ? 20 : Math.max(insets.bottom + 8, 24),
+    },
+  ];
+
   return (
-    <View style={styles.container}>
+    <View style={containerStyle}>
       <TextInput
         style={styles.input}
         value={text}
@@ -60,7 +69,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    paddingBottom: Platform.OS === 'ios' ? 20 : 8,
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderTopColor: '#E5E5E5',
