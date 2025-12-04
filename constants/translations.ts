@@ -15,6 +15,7 @@ export interface Translations {
   chat: {
     headerTitle: string;
     emptyMessage: string;
+    jobNumberHint: string;
   };
 }
 
@@ -34,6 +35,7 @@ export const translations: Record<Language, Translations> = {
     chat: {
       headerTitle: 'චැට් බොට්',
       emptyMessage: '"හායි" හෝ "කොහොමද" යැවීමෙන් සංවාදයක් ආරම්භ කරන්න',
+      jobNumberHint: 'රැකියාවක් හෝ කාර්යයක තත්ත්වය පරීක්ෂා කරනු ලබයි',
     },
   },
   en: {
@@ -51,6 +53,7 @@ export const translations: Record<Language, Translations> = {
     chat: {
       headerTitle: 'Chat Bot',
       emptyMessage: 'Start a conversation by sending "hi" or "hello"',
+      jobNumberHint: 'Checking job or task status',
     },
   },
 };
