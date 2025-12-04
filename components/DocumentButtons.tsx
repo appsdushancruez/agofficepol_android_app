@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: '#007AFF',
+    backgroundColor: '#11486b', // Dark teal - primary color
     borderRadius: 3,
   },
   progressText: {
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
   },
   downloadButton: {
     flex: 1,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#11486b', // Dark teal - primary color
     padding: 10,
     borderRadius: 6,
     alignItems: 'center',
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
   },
   shareButton: {
     flex: 1,
-    backgroundColor: '#34C759',
+    backgroundColor: '#478356', // Earthy green - secondary color
     padding: 10,
     borderRadius: 6,
     alignItems: 'center',

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   bubble: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#F0F0F0',
     borderRadius: 16,
     borderBottomLeftRadius: 4,
     paddingHorizontal: 16,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#666666',
+    backgroundColor: '#11486b', // Dark teal - primary color
   },
 });
 

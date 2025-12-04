@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FF0000',
+    color: '#ac2b49', // Deep red - error color
     marginBottom: 10,
   },
   message: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#25D366',
+    backgroundColor: '#11486b', // Dark teal - primary color
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 8,

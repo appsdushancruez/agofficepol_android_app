@@ -42,7 +42,7 @@ export default function LoadingScreen() {
 
   return (
     <LinearGradient
-      colors={['#E8F5E9', '#C8E6C9', '#A5D6A7', '#F1F8F4', '#FFFFFF']}
+      colors={['#E8F0F5', '#D0E0E8', '#B8D0DB', '#F0F5F8', '#FFFFFF']}
       locations={[0, 0.25, 0.5, 0.75, 1]}
       style={styles.gradientContainer}>
       <View style={styles.container}>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.light.whatsappGreenDark,
+    color: Colors.light.primary, // Dark teal - primary color
     textAlign: 'center',
     marginBottom: 8,
     lineHeight: 28,
@@ -148,13 +148,13 @@ const styles = StyleSheet.create({
   progressBarBackground: {
     width: '100%',
     height: 6,
-    backgroundColor: '#C8E6C9',
+    backgroundColor: '#D0E0E8',
     borderRadius: 3,
     overflow: 'hidden',
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: Colors.light.whatsappGreen,
+    backgroundColor: Colors.light.primary, // Dark teal - primary color
     borderRadius: 3,
   },
   footerContainer: {

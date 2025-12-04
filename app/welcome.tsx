@@ -34,7 +34,7 @@ export default function WelcomeScreen() {
 
   return (
     <LinearGradient
-      colors={['#E8F5E9', '#F1F8F4', '#FFFFFF', '#F5FDF7']}
+      colors={['#E8F0F5', '#F0F5F8', '#FFFFFF', '#F8FAFB']}
       locations={[0, 0.3, 0.7, 1]}
       style={styles.gradientContainer}>
       <ScrollView
@@ -150,13 +150,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   badge: {
-    backgroundColor: 'rgba(232, 245, 233, 0.95)',
+    backgroundColor: 'rgba(232, 240, 245, 0.95)',
     borderWidth: 1.5,
-    borderColor: '#A5D6A7',
+    borderColor: '#6B9BB8',
     borderRadius: 24,
     paddingHorizontal: 18,
     paddingVertical: 10,
-    shadowColor: '#25D366',
+    shadowColor: '#11486b',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     fontSize: 13,
-    color: '#128C7E',
+    color: '#11486b',
     fontWeight: '600',
     letterSpacing: 0.3,
   },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     color: '#1A1A1A',
   },
   titleGreen: {
-    color: '#25D366',
+    color: '#11486b', // Dark teal - primary color
   },
   animationContainer: {
     alignItems: 'center',
@@ -241,9 +241,9 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   languageButtonActive: {
-    borderColor: '#25D366',
-    backgroundColor: 'rgba(232, 245, 233, 0.8)',
-    shadowColor: '#25D366',
+    borderColor: '#11486b',
+    backgroundColor: 'rgba(232, 240, 245, 0.8)',
+    shadowColor: '#11486b',
     shadowOpacity: 0.25,
     shadowRadius: 6,
     elevation: 5,
@@ -255,14 +255,14 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   languageButtonTextActive: {
-    color: '#128C7E',
+    color: '#11486b',
     fontWeight: '700',
   },
   buttonContainer: {
     marginBottom: 28,
   },
   chatButton: {
-    backgroundColor: '#25D366',
+    backgroundColor: '#ffa425', // Bright orange - CTA color
     borderRadius: 20,
     paddingVertical: 18,
     paddingHorizontal: 32,
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    shadowColor: '#25D366',
+    shadowColor: '#ffa425',
     shadowOffset: {
       width: 0,
       height: 6,
@@ -306,8 +306,8 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#25D366',
-    shadowColor: '#25D366',
+    backgroundColor: '#478356', // Earthy green - secondary color
+    shadowColor: '#478356',
     shadowOffset: {
       width: 0,
       height: 0,

@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
   },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#4CAF50', // Light green
+    backgroundColor: '#11486b', // Dark teal - primary color
     borderBottomRightRadius: 4,
   },
   botMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#E5E5E5', // Light gray
+    backgroundColor: '#F0F0F0', // Light gray
     borderBottomLeftRadius: 4,
   },
   messageText: {

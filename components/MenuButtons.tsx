@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   button: {
-    backgroundColor: '#2563eb', // Primary blue
+    backgroundColor: '#11486b', // Dark teal - primary color
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 8,

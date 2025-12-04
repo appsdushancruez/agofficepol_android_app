@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: Colors.light.whatsappGreen,
+    backgroundColor: Colors.light.primary, // Dark teal - primary color
     paddingVertical: 16,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
