@@ -7,19 +7,23 @@ import { Colors } from '@/constants/theme';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { chatAPI } from '@/services/api';
 import { ChatMessage as ChatMessageType, Document, MenuItem } from '@/types';
+import { translateText } from '@/utils/translation';
+import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    FlatList,
-    KeyboardAvoidingView,
-    Platform,
-    StyleSheet,
-    Text,
-    View,
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ChatScreen() {
-  const { t } = useLanguage();
+  const router = useRouter();
+  const { language, t } = useLanguage();
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentParentId, setCurrentParentId] = useState<string | null>(null);
@@ -35,6 +39,10 @@ export default function ChatScreen() {
       }, 100);
     }
   }, [messages.length]);
+
+  const handleBackPress = () => {
+    router.replace('/welcome');
+  };
 
   // Check if message is a greeting - reset context when greeting is detected
   const isGreeting = (message: string): boolean => {
@@ -127,13 +135,34 @@ export default function ChatScreen() {
         });
       }
 
+      // Translate response text if needed based on current UI language
+      let displayText = responseText;
+      if (language !== 'en') {
+        displayText = await translateText(responseText, language);
+      }
+
+      // Translate menu item titles if needed
+      let translatedMenuItems = response.menuItems || [];
+      if (language !== 'en' && translatedMenuItems.length > 0) {
+        // Translate all menu item titles in parallel
+        translatedMenuItems = await Promise.all(
+          translatedMenuItems.map(async (item) => {
+            const translatedTitle = await translateText(item.title, language);
+            return {
+              ...item,
+              title: translatedTitle,
+            };
+          })
+        );
+      }
+
       // Create bot message
       const botMessage: ChatMessageType = {
         id: (Date.now() + 1).toString(),
-        text: responseText,
+        text: displayText,
         isUser: false,
         timestamp: new Date(),
-        menuItems: response.menuItems || [],
+        menuItems: translatedMenuItems,
         documents: documents.length > 0 ? documents : undefined,
       };
       
@@ -202,6 +231,10 @@ export default function ChatScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
         <View style={styles.header}>
+          <Pressable style={styles.backButton} onPress={handleBackPress}>
+            <Text style={styles.backButtonIcon}>←</Text>
+            <Text style={styles.backButtonText}>{t.chat.backLabel}</Text>
+          </Pressable>
           <Text style={styles.headerTitle}>{t.chat.headerTitle}</Text>
         </View>
         <FlatList
@@ -238,12 +271,33 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: Colors.light.primary, // Dark teal - primary color
-    paddingVertical: 16,
+    paddingVertical: 12,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
+    paddingRight: 12,
+  },
+  backButtonIcon: {
+    color: '#FFFFFF',
+    fontSize: 24,
+    fontWeight: '700',
+    marginRight: 6,
+  },
+  backButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
   },
   headerTitle: {
+    flex: 1,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',

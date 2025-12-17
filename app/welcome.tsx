@@ -104,6 +104,20 @@ export default function WelcomeScreen() {
               English
             </Text>
           </Pressable>
+          <Pressable
+            style={[
+              styles.languageButton,
+              language === 'ta' && styles.languageButtonActive,
+            ]}
+            onPress={() => handleLanguageChange('ta')}>
+            <Text
+              style={[
+                styles.languageButtonText,
+                language === 'ta' && styles.languageButtonTextActive,
+              ]}>
+              தமிழ்
+            </Text>
+          </Pressable>
         </View>
       </View>
 

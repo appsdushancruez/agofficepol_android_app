@@ -1,4 +1,4 @@
-export type Language = 'si' | 'en';
+export type Language = 'si' | 'en' | 'ta';
 
 export interface Translations {
   welcome: {
@@ -16,6 +16,7 @@ export interface Translations {
     headerTitle: string;
     emptyMessage: string;
     jobNumberHint: string;
+    backLabel: string;
   };
 }
 
@@ -36,6 +37,7 @@ export const translations: Record<Language, Translations> = {
       headerTitle: 'චැට් බොට්',
       emptyMessage: '"හායි" හෝ "කොහොමද" යැවීමෙන් සංවාදයක් ආරම්භ කරන්න',
       jobNumberHint: 'රැකියාවක් හෝ කාර්යයක තත්ත්වය පරීක්ෂා කරනු ලබයි',
+      backLabel: 'ආපසු',
     },
   },
   en: {
@@ -54,6 +56,27 @@ export const translations: Record<Language, Translations> = {
       headerTitle: 'Chat Bot',
       emptyMessage: 'Start a conversation by sending "hi" or "hello"',
       jobNumberHint: 'Checking job or task status',
+      backLabel: 'Back',
+    },
+  },
+  ta: {
+    welcome: {
+      badge: 'AI அரட்டைபேசி சேவை',
+      titlePart1: 'WhatsApp',
+      titlePart2: 'Bot',
+      titlePart3: 'Admin',
+      titlePart4: 'System',
+      description:
+        'WhatsApp மூலம் எங்களுடன் தொடர்பு கொண்டு பல்வேறு சேவைகளைப் பெறுங்கள். முக்கிய தகவல்கள், ஆவணங்கள், அனுமதிகள் மற்றும் வேலை நிலை மேம்பாடுகளைப் பெறுங்கள்.',
+      chatButton: 'போட்டுடன் அரட்டை',
+      liveStatus: 'நேரலை & செயலில்',
+      selectLanguage: 'மொழியைத் தேர்ந்தெடுக்கவும்',
+    },
+    chat: {
+      headerTitle: 'அரட்டை போட்டி',
+      emptyMessage: '"ஹாய்" அல்லது "ஹலோ" அனுப்பி உரையாடலைத் தொடங்குங்கள்',
+      jobNumberHint: 'வேலை அல்லது பணியின் நிலையை சரிபார்க்கிறது',
+      backLabel: 'பின்செல்',
     },
   },
 };

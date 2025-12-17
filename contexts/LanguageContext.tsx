@@ -23,8 +23,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const loadLanguage = async () => {
     try {
       const savedLanguage = await AsyncStorage.getItem(LANGUAGE_STORAGE_KEY);
-      if (savedLanguage === 'si' || savedLanguage === 'en') {
-        setLanguageState(savedLanguage);
+      if (savedLanguage === 'si' || savedLanguage === 'en' || savedLanguage === 'ta') {
+        setLanguageState(savedLanguage as Language);
       }
     } catch (error) {
       console.error('Error loading language:', error);
